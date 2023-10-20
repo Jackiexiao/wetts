@@ -259,8 +259,8 @@ class HParams:
     def __len__(self):
         return len(self.__dict__)
 
-    def __getitem__(self, key):
-        return getattr(self, key)
+    def __getitem__(self, key, default=None):
+        return getattr(self, key, default)
 
     def __setitem__(self, key, value):
         return setattr(self, key, value)
@@ -270,3 +270,6 @@ class HParams:
 
     def __repr__(self):
         return self.__dict__.__repr__()
+
+    def get(self, key, default=None):
+        return self.__getitem__(key, default=default)
